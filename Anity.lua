@@ -2145,8 +2145,7 @@ function Library:Window(p)
 				end
 				FrameValueTextBox.BackgroundColor3 = themes[IsTheme].Function.Slider['Value Background']
 				TextBox_1.TextColor3 = themes[IsTheme]['Text & Icon']
-				UIStroke_1.Color = themes[IsTheme].Function.Slider['Value Stroke'].Color -- Assuming logic handles transparency? Original logic uses object property for transparency
-				UIStroke_1.Transparency = themes[IsTheme].Function.Slider['Value Stroke'].Transparency
+				UIStroke_1.Color = themes[IsTheme].Function.Slider['Value Stroke']
 				Frame_2.BackgroundColor3 = themes[IsTheme].Function.Slider['Slider Bar']
 				Frame_3.BackgroundColor3 = themes[IsTheme].Function.Slider['Slider Bar Value']
 				Frame_4.BackgroundColor3 = themes[IsTheme].Function.Slider['Circle Value']
@@ -2968,8 +2967,7 @@ function Library:Window(p)
 					bg.BackgroundColor3 = themes[IsTheme].Function.Keybind.Background
 				end
 				KeybindValue_1.BackgroundColor3 = themes[IsTheme].Function.Keybind['Value Background']
-				UIStroke_1.Color = themes[IsTheme].Function.Keybind['Value Stroke'].Color
-				UIStroke_1.Transparency = themes[IsTheme].Function.Keybind['Value Stroke'].Transparency
+				UIStroke_1.Color = themes[IsTheme].Function.Keybind['Value Stroke']
 				TextLabel_1.TextColor3 = themes[IsTheme]['Text & Icon']
 			end
 
@@ -3861,15 +3859,14 @@ function Library:Window(p)
 
 			if IsTheme and themes[IsTheme] then
 				ColorpickBar.BackgroundColor3 = themes[IsTheme].Function['Color Picker']['Color Select'].Background
-				UIStroke_1.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
-				UIStroke_1.Transparency = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Transparency
+				UIStroke_1.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke
 				TitleColorPicker.TextColor3 = themes[IsTheme]['Text & Icon']
 				TextLabel_1.TextColor3 = themes[IsTheme]['Text & Icon']
 				TextLabel_2.TextColor3 = themes[IsTheme]['Text & Icon']
-				UIStroke_11.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
-				UIStroke_2.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
-				UIStroke_3.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
-				UIStroke_4.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
+				UIStroke_11.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke
+				UIStroke_2.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke
+				UIStroke_3.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke
+				UIStroke_4.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke
 				TextLabel_3.TextColor3 = themes[IsTheme]['Text & Icon']
 				TextLabel_4.TextColor3 = themes[IsTheme]['Text & Icon']
 				TextLabel_5.TextColor3 = themes[IsTheme]['Text & Icon']
@@ -4020,8 +4017,7 @@ function Library:Window(p)
 
 			if IsTheme and themes[IsTheme] then
 				Frame_1.BackgroundColor3 = themes[IsTheme].Function.Textbox['Value Background']
-				UIStroke_1.Color = themes[IsTheme].Function.Textbox['Value Stroke'].Color
-				UIStroke_1.Transparency = themes[IsTheme].Function.Textbox['Value Stroke'].Transparency
+				UIStroke_1.Color = themes[IsTheme].Function.Textbox['Value Stroke']
 				ImageLabel_1.ImageColor3 = themes[IsTheme]['Text & Value']
 				TextLabel_1.TextColor3 = themes[IsTheme]['Text & Value']
 			end
