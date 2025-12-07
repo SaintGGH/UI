@@ -1049,12 +1049,14 @@ function Library:Window(p)
 	local Desc = p.Desc or ''
 	local Icon = p.Icon or 'door-open'
 	local Theme = p.Theme or 'AnityX'
+	if Theme == "AntigravityX" or not themes[Theme] then Theme = 'AnityX' end
+
 	local Keybind = p.Config.Keybind or Enum.KeyCode.LeftControl
 	local Size = p.Config.Size or UDim2.new(0, 530,0, 400)
 
 	local R, HAA = false, false
-	local HasChangeTheme = p.Theme
-	local IsTheme = p.Theme
+	local HasChangeTheme = Theme
+	local IsTheme = Theme
 
 	local Shadow_1 = Instance.new("ImageLabel")
 	local UIPadding_1 = Instance.new("UIPadding")
@@ -4723,7 +4725,11 @@ function Library:Window(p)
 		end
 	end
 
+	function Tabs:AddTab(p)
+		return self:Tab(p)
+	end
 	return Tabs
 end
 
+Library.CreateWindow = Library.Window
 return Library
