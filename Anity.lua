@@ -1054,7 +1054,7 @@ function Library:Window(p)
 
 	local R, HAA = false, false
 	local HasChangeTheme = p.Theme
-	local IsTheme = p.Theme
+	local IsTheme = p.Theme or 'AnityX'
 
 	local Shadow_1 = Instance.new("ImageLabel")
 	local UIPadding_1 = Instance.new("UIPadding")
@@ -1731,6 +1731,10 @@ function Library:Window(p)
 				Section_1.Text = t
 			end
 
+			if IsTheme and themes[IsTheme] then
+				Section_1.TextColor3 = themes[IsTheme]['Text & Icon']
+			end
+
 			return New
 		end
 
@@ -1742,6 +1746,13 @@ function Library:Window(p)
 			local Desc = p.Desc or ''
 
 			local Toggle, Config = background(ScrollingFrame_1, Title, Desc, Image, 'Toggle')
+
+			if IsTheme and themes[IsTheme] then
+				local bg = Toggle:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Toggle.Background
+				end
+			end
 
 			local F_1 = Instance.new("Frame")
 			local UIListLayout_1 = Instance.new("UIListLayout")
@@ -1873,6 +1884,13 @@ function Library:Window(p)
 
 			local Label, Config = background(ScrollingFrame_1, Title, Desc, Image, 'Label')
 
+			if IsTheme and themes[IsTheme] then
+				local bg = Label:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Label.Background
+				end
+			end
+
 			Config:SetTextTransparencyTitle(0)
 			Config:SetSizeT(0)
 
@@ -1954,6 +1972,14 @@ function Library:Window(p)
 				end)
 				pcall(Callback)
 			end)
+
+			if IsTheme and themes[IsTheme] then
+				local bg = Button:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Button.Background
+				end
+				Image_1.ImageColor3 = themes[IsTheme]['Text & Icon']
+			end
 		end
 
 		function Func:Slider(p)
@@ -2110,6 +2136,20 @@ function Library:Window(p)
 				tw({v = Frame_3, t = 0.15, s = Enum.EasingStyle.Exponential, d = "Out", g = {Size = UDim2.new(math.clamp(va, 0.12, 1), 0, 1, 0)}}):Play()
 				TextBox_1.Text = tostring(roundToDecimal(value, Rounding))
 				pcall(Callback ,value)
+			end
+
+			if IsTheme and themes[IsTheme] then
+				local bg = Slider:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Slider.Background
+				end
+				FrameValueTextBox.BackgroundColor3 = themes[IsTheme].Function.Slider['Value Background']
+				TextBox_1.TextColor3 = themes[IsTheme]['Text & Icon']
+				UIStroke_1.Color = themes[IsTheme].Function.Slider['Value Stroke'].Color -- Assuming logic handles transparency? Original logic uses object property for transparency
+				UIStroke_1.Transparency = themes[IsTheme].Function.Slider['Value Stroke'].Transparency
+				Frame_2.BackgroundColor3 = themes[IsTheme].Function.Slider['Slider Bar']
+				Frame_3.BackgroundColor3 = themes[IsTheme].Function.Slider['Slider Bar Value']
+				Frame_4.BackgroundColor3 = themes[IsTheme].Function.Slider['Circle Value']
 			end
 
 			updateSlider(Value or 0)
@@ -2739,6 +2779,13 @@ function Library:Window(p)
 				CodeText = t
 			end
 
+			if IsTheme and themes[IsTheme] then
+				F_1.BackgroundColor3 = themes[IsTheme].Function.Code['Background Code']
+				Frame_2.BackgroundColor3 = themes[IsTheme].Function.Code['Background Code Value']
+				Frame_4.BackgroundColor3 = themes[IsTheme].Function.Code['Background Code Value']
+				TextBox_2.TextColor3 = themes[IsTheme]['Text & Icon']
+			end
+
 			return New
 		end
 
@@ -2752,6 +2799,13 @@ function Library:Window(p)
 			local Callback = p.Callback or function() end
 
 			local Dropdown, Config = background(ScrollingFrame_1, Title, Desc, Image, 'Dropdown')
+
+			if IsTheme and themes[IsTheme] then
+				local bg = Dropdown:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Dropdown.Background
+				end
+			end
 
 			Config:SetTextTransparencyTitle(0)
 			Config:SetSizeT(125)
@@ -2908,6 +2962,17 @@ function Library:Window(p)
 
 			Value = not Value
 
+			if IsTheme and themes[IsTheme] then
+				local bg = Keybind:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Keybind.Background
+				end
+				KeybindValue_1.BackgroundColor3 = themes[IsTheme].Function.Keybind['Value Background']
+				UIStroke_1.Color = themes[IsTheme].Function.Keybind['Value Stroke'].Color
+				UIStroke_1.Transparency = themes[IsTheme].Function.Keybind['Value Stroke'].Transparency
+				TextLabel_1.TextColor3 = themes[IsTheme]['Text & Icon']
+			end
+
 			local function change()
 				Value = not Value
 				if Value then
@@ -3021,6 +3086,13 @@ function Library:Window(p)
 			local Callback = p.Callback or function() end
 
 			local ColorPicker, Config = background(ScrollingFrame_1, Title, Desc, Image, 'Color Picker')
+
+			if IsTheme and themes[IsTheme] then
+				local bg = ColorPicker:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function['Color Picker'].Background
+				end
+			end
 
 			Config:SetTextTransparencyTitle(0)
 			Config:SetSizeT(50)
@@ -3787,6 +3859,25 @@ function Library:Window(p)
 				end
 			end
 
+			if IsTheme and themes[IsTheme] then
+				ColorpickBar.BackgroundColor3 = themes[IsTheme].Function['Color Picker']['Color Select'].Background
+				UIStroke_1.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
+				UIStroke_1.Transparency = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Transparency
+				TitleColorPicker.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_1.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_2.TextColor3 = themes[IsTheme]['Text & Icon']
+				UIStroke_11.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
+				UIStroke_2.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
+				UIStroke_3.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
+				UIStroke_4.Color = themes[IsTheme].Function['Color Picker']['Color Select'].UIStroke.Color
+				TextLabel_3.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_4.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_5.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_6.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_7.TextColor3 = themes[IsTheme]['Text & Icon']
+				TextLabel_8.TextColor3 = themes[IsTheme]['Text & Icon']
+			end
+
 			return New
 		end
 
@@ -3800,6 +3891,13 @@ function Library:Window(p)
 			local Callback = p.Callback or function() end
 
 			local Textbox, Config = background(ScrollingFrame_1, Title, Desc, Image, 'Textbox')
+
+			if IsTheme and themes[IsTheme] then
+				local bg = Textbox:FindFirstChild("Background")
+				if bg then
+					bg.BackgroundColor3 = themes[IsTheme].Function.Textbox.Background
+				end
+			end
 
 			Config:SetTextTransparencyTitle(0)
 			Config:SetSizeT(145)
@@ -3920,6 +4018,14 @@ function Library:Window(p)
 				Config:SetDesc(t)
 			end
 
+			if IsTheme and themes[IsTheme] then
+				Frame_1.BackgroundColor3 = themes[IsTheme].Function.Textbox['Value Background']
+				UIStroke_1.Color = themes[IsTheme].Function.Textbox['Value Stroke'].Color
+				UIStroke_1.Transparency = themes[IsTheme].Function.Textbox['Value Stroke'].Transparency
+				ImageLabel_1.ImageColor3 = themes[IsTheme]['Text & Value']
+				TextLabel_1.TextColor3 = themes[IsTheme]['Text & Value']
+			end
+
 			function New:SetVisible(t)
 				Textbox.Visible = t
 			end
@@ -3954,6 +4060,7 @@ function Library:Window(p)
 			UICorner_1.CornerRadius = UDim.new(0,3)
 		end
 
+		Library:setTheme(themes[IsTheme])
 		return Func
 	end
 
